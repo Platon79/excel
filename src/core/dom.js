@@ -18,6 +18,18 @@ class Dom {
     return this;
   }
 
+  on(eventType, callback) {
+    this.$el.addEventListener(eventType, callback);
+  }
+
+  off(eventType, callback) {
+    this.$el.removeEventListener(eventType, callback);
+  }
+
+  find(selector) {
+    return $(this.$el.querySelector(selector));
+  }
+
   append(node) {
     if (node instanceof Dom) {
       node = node.$el;
@@ -30,14 +42,6 @@ class Dom {
     }
 
     return this;
-  }
-
-  on(eventType, callback) {
-    this.$el.addEventListener(eventType, callback);
-  }
-
-  off(eventType, callback) {
-    this.$el.removeEventListener(eventType, callback);
   }
 
   get data() {
@@ -62,6 +66,16 @@ class Dom {
         .forEach((key) => {
           this.$el.style[key] = styles[key];
         });
+  }
+
+  addClass(className) {
+    this.$el.classList.add(className);
+    return this;
+  }
+
+  removeClass(className) {
+    this.$el.classList.remove(className);
+    return this;
   }
 }
 

@@ -4,6 +4,7 @@ import {Emitter} from '@core/Emitter';
 export class Excel {
   constructor(selector, options) {
     this.$el = $(selector);
+    this.store = options.store;
     this.components = options.components || [];
     this.emitter = new Emitter();
   }
@@ -13,6 +14,7 @@ export class Excel {
 
     const componentOptions = {
       emitter: this.emitter,
+      stoe: this.store,
     };
 
     this.components = this.components.map((Component) => {

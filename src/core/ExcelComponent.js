@@ -30,6 +30,10 @@ export default class ExcelComponent extends DomListener {
     this.store.dispatch(action);
   }
 
+  $subscribe(fn) {
+    this.storeSub = this.store.subscribe(fn);
+  }
+
   init() {
     this.initDomListeners();
   }

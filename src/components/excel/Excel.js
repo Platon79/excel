@@ -14,7 +14,7 @@ export class Excel {
 
     const componentOptions = {
       emitter: this.emitter,
-      stoe: this.store,
+      store: this.store,
     };
 
     this.components = this.components.map((Component) => {

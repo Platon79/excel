@@ -13,8 +13,8 @@ export function createStore(rootReducer, initialState = {}) {
       };
     },
     dispatch(action = {}) {
-      rootReducer(state, action);
-      listeners.forEach((listener) => listener(state));
+      const newState = rootReducer(state, action);
+      listeners.forEach((listener) => listener(newState));
     },
     getState() {
       return state;

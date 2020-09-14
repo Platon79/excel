@@ -28,13 +28,13 @@ export class Table extends ExcelComponent {
   init() {
     super.init();
 
-    const $cell = this.$root.find('[data-id="0:0"]');
-    this.selection.select($cell);
+    this.selectCell(this.$root.find('[data-id="0:0"]'));
 
     this.$on('formula:input', (text) => {
       this.selection.current.text(text);
       this.updateTextInStore(text);
     });
+
     this.$on('formula:done', () => {
       this.selection.current.focus();
     });

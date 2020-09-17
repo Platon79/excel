@@ -1,6 +1,5 @@
 export function createStore(rootReducer, initialState = {}) {
-  // eslint-disable-next-line
-  let state = rootReducer(initialState, {type: '__INIT__'});
+  let state = rootReducer({...initialState}, {type: '__INIT__'});
   let listeners = [];
 
   return {
@@ -12,12 +11,14 @@ export function createStore(rootReducer, initialState = {}) {
         },
       };
     },
-    dispatch(action = {}) {
-      const newState = rootReducer(state, action);
-      listeners.forEach((listener) => listener(newState));
+    dispatch(action) {
+      state = rootReducer(state, action);
+      listeners.forEach((listener) => listener(state));
     },
     getState() {
-      return state;
+      return JSON.parse(JSON.stringify(state));
     },
   };
 }
+
+// Extra Task - Переписать на класс

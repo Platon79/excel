@@ -5,8 +5,8 @@ import {StoreSubscriber} from '@core/StoreSubscriber';
 export class Excel {
   constructor(selector, options) {
     this.$el = $(selector);
-    this.store = options.store;
     this.components = options.components || [];
+    this.store = options.store;
     this.emitter = new Emitter();
     this.subscriber = new StoreSubscriber(this.store);
   }
